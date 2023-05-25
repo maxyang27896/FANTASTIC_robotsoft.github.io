@@ -163,7 +163,7 @@
 					</td>
 					<td align=center width=150px>
 						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Naoki Shitanda</a></span>
+							<span style="font-size:24px"><a href="https://naokishitanda.portfoliobox.net/">Naoki Shitanda</a></span>
 						</center>
 					</td>
 					<td align=center width=150px>
@@ -191,7 +191,7 @@
 					</td>
 					<td align="center" width="150px">
 					  <center>
-						<span style="font-size:16px">Description 4</span>
+						<span style="font-size:16px">Sch. of Electrical & Electronic Eng. Kyoto University, Japan</span>
 					  </center>
 					</td>
 					<td align="center" width="150px">
@@ -342,9 +342,40 @@
 		<center><h1>Object and Grasp Detection</h1></center>
 		<tr>
 			<td>
-				This describes the vision based system and grasp detection algorithm
-			</td>
+				Our robot system has a RealSense Depth Camera D435i for object and grasp detection. The computer vision system consists of three parts: (1) object detection by YOLO, (2) generation of grasp pose in bins by FGE Algorithm, and (3) object localization on the workspace.
+				<br>
+				<br>
+				1. Object detection by YOLO
+				<br>
+				We used the <a href="https://github.com/ultralytics/yolov5">You Only Look Once (YOLO) algorithm</a> to quickly detect and classify objects. 
+				The algorithm generates a box containing an object from an RGB image and attach a name on it through classification. 
+				In our food-picking system, <a href="https://github.com/lannguyen0910/food-recognition">the pre-trained YOLOv5x model</a> was chosen to detect cookies and sunny-side ups. 
+				<a href="https://storage.googleapis.com/openimages/web/index.html">Open Images V6-Food</a> and Vietnamese food pictures were used for object detection, 
+				while the <a href="https://www.sciencedirect.com/science/article/pii/S1047320319301002">MAFood121 dataset</a> was used for classification training. 
+				In order to detect the bottle containing orange juice, we used <a href="https://github.com/ultralytics/yolov5/blob/master/data/Objects365.yaml">a model trained with Object365 dataset</a>
+				<br>
+				<br>
+				2. Generation of Grasp pose in bins by FGE Algorithm
+				<br>
+				Random grasping, which executes grasping in the center of the bin, works for some objects like ice jems and pasta, however it is not a good idea to pick up large objects for example sausages and broccoli.
+				From a depth map, <a href="https://ieeexplore.ieee.org/document/6907124">the Fast Graspability Evaluation algorithm</a> generates multiple candidates for the optimal grasping position with less unexpected collision with to untargeted objects.
+				The algorithm calculates graspability in order to determine the top five candidates by caliculating collision index from depth map and gripper geometory. 
+				We referred to <a href="https://github.com/xinyiz0931/bin-picking-%20robot/blob/master/bpbot/binpicking.py">Xinyi Zhang’s code</a> for implementation and optimized it for our senacio.
+				<br>
+				<br>
+				3. Object localization on the workspace
+				<br>
+				~~
+				<br>
+				<br>
+				
+				</td>
 		</tr>
+		<td width=120px style="padding-right: 20px;">
+			<center>
+				<img class="round" style="width:500px" src="./resources/object_detection.png"/>
+			</center>
+		</td>
 	</table>
 	<br>
 
