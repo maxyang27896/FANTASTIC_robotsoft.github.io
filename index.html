@@ -284,7 +284,27 @@
 		<center><h1>Competition Detail</h1></center>
 		<tr>
 			<td>
-				This decribes the competition requirements.
+				A robot must assemble as many complete food trays as possible in 30 minutes. The robot must use at least one "soft" component, such as but not limited to a gripper, and must be fully autonomous. The food tray shall contain seven types of food selected from the list below:
+				<br>
+				<ul>
+					<li>Frankfurter sausages (boiled)</li>
+					<li>Meatballs (cooked)</li>
+					<li>Broccoli (florets, raw)</li>
+					<li>Carrots (sliced, 2-5 mm in thickness, cooked)</li>
+					<li>Green beans (cooked)</li>
+					<li>Spaghetti Noodles (cooked)</li>
+					<li>Cookies from IKEA (KAFFEREP)</li>
+					<li>Fried eggs (sunny side up)</li>
+					<li>Surprise food item (It was turned out as iced gems.)</li>
+					<li>Orange juice</li>
+				</ul>
+				<br>
+				The surprise food item was randomly replaced with another food item on the list 30 minutes before the actual run. Therefore, each team got a different combination of food items in the competition. To our team, broccoli was replaced with iced gems.
+				In no specific order, a robot must pick food items from the source table and place them into particular containers on a tray. The robot may assemble up to two complete trays with a predefined quantity of the items. On the source table, the bins are filled with more food than the required quantity to assemble and are firmly glued to a fixed rack and the source table. During the actual run, a team can restart the autonomous system, but the score is reset to zero.
+				A detailed rule book can be found here.
+				<br>
+				<br>
+				Further detailed rules and scoring guidelines can be found <a href="./resources/pdfs/RoboSoft_competition_guides.pdf" target="_blank">here</a>.
 			</td>
 		</tr>
 	</table>
@@ -293,10 +313,25 @@
 	<hr>
 
 	<table align=center width=850px>
-		<center><h1>Motion Planning and Collision Detection</h1></center>
+		<center><h1>Motion Planning and Collision Avoidance</h1></center>
 		<tr>
 			<td>
-				This describes the collition detection algorithm.
+				One of the difficulties in this competition is to move the robot arm to a place without collision with the surrounding physical environment, such as bins and the rack. Our solution was building a digital twin in the Moveit! motion planning framework. Since this framework considers the motion planning of a robot arm by avoiding virtual objects, both motion planning and collision avoidance can be exploited as long as the virtual objects and the robot arms present the actual ones.
+				<br>
+				<br>
+				In Ubuntu 20.04, we installed the robot operating system (ROS) Noetic version and MoveIt! Noetic. The digital twin shown in MoveIt! consists of three parts: (1) connecting a virtual gripper to the virtual robot arm (UR5 or UR10), (2) loading the arm and the gripper in MoveIt!, and (3) controlling the real robot from the virtual robot.
+				<br>
+				1. Connecting a virtual gripper to the virtual robot arm.
+				<br>
+				In our actual setup, a Robotiq 2F gripper has been connected to the UR10 robot. For the digital twin of it, we created a xacro file that combines two different URDF files representing the gripper and the robot, respectively. For the technical details, please refer to this <a href="https://github.com/s-nam/UniversalRobots/blob/main/Installation_guides/02_Robotiq_2F_gripper/Create_URDF.md" target="_blank">link</a>.
+				<br>
+				<br>
+				2. Loading the arm and the gripper in MoveIt!
+				<br>
+				Loading the gripper-attached robot arm in MoveIt! GUI can be very tricky because there are so many parameters to tune. One simple way to set it up is using MoveIt Setup Assistant. Although the tool does not solve all of your problems, it can be a good starting point. We summarized how to use it <a href="https://github.com/s-nam/UniversalRobots/blob/main/Installation_guides/02_Robotiq_2F_gripper/Moveit_setup.md" target="_blank">here</a>.
+				<br>
+				<br>
+
 			</td>
 		</tr>
 	</table>
