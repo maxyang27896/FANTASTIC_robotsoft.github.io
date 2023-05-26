@@ -1,9 +1,10 @@
 <script src="http://www.google.com/jsapi" type="text/javascript"></script> 
 <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 <style type="text/css">
 	body {
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-family: Arial, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif; 
 		font-weight:300;
 		font-size:18px;
 		margin-left: auto;
@@ -114,6 +115,42 @@
 		height: 1px;
 		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 	}
+
+	.table-of-contents {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: auto 120px;
+		margin-top:20px;
+		margin-bottom: 20px;
+    }
+    
+	.table-of-contents-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+		padding-left: 10px;
+		
+    }
+
+    .table-of-contents ul {
+        list-style-type: disc;
+        padding-left: 50px;
+    }
+    
+	.table-of-contents li {
+        margin-bottom: 5px; /* Adds line spacing between bullet points */
+    }
+
+    .table-of-contents a {
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .table-of-contents a:hover {
+        text-decoration: underline;
+    }
 </style>
 
 <html>
@@ -141,130 +178,47 @@
 		<div style="margin-bottom: 20px;">
 			<span style="font-size:40px">Integrated System for Robot Food Handling at the Robosoft 2023 Manipulation Competition</span>
 		</div>
-		<table align=center width=600px>
-
-			<!-- Postdoc/Student Authors -->
-			<table align=center width=800px>
-				<tr>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Saekwang Nam</a></span>
-						</center>
-					</td>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Loong Yi Lee</a></span>
-						</center>
-					</td>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Max Yang</a></span>
-						</center>
-					</td>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://naokishitanda.portfoliobox.net/">Naoki Shitanda</a></span>
-						</center>
-					</td>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Lihaoya Tan</a></span>
-						</center>
-					</td>
-				</tr>
-
-				<tr>
-					<td align="center" width="150px">
-					  <center>
-						<span style="font-size:16px">Description 1</span>
-					  </center>
-					</td>
-					<td align="center" width="150px">
-					  <center>
-						<span style="font-size:16px">Description 2</span>
-					  </center>
-					</td>
-					<td align="center" width="150px">
-					  <center>
-						<span style="font-size:16px">Description 3</span>
-					  </center>
-					</td>
-					<td align="center" width="150px">
-					  <center>
-						<span style="font-size:16px">Sch. of Electrical & Electronic Eng. Kyoto University, Japan</span>
-					  </center>
-					</td>
-					<td align="center" width="150px">
-						<center>
-						  <span style="font-size:16px">Description 5</span>
-						</center>
-					  </td>
-				</tr>
-
-				<!-- Add vertical padding between student and faculty sections -->
-				<tr style="height: 20px;">
-					<td colspan="4"></td>
-				</tr>
-				
-			</table>
-			
-			<!-- Faculty Authors -->
-			<table align=center width=500px>
-				<tr>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Jonathan Rossiter</a></span>
-						</center>
-					</td>
-					<td align=center width=150px>
-						<center>
-							<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Nathan Lepora</a></span>
-						</center>
-					</td>
-				</tr>
-
-				<tr>
-					<td align="center" width="150px">
-					  <center>
-						<span style="font-size:16px">Description 1</span>
-					  </center>
-					</td>
-					<td align="center" width="150px">
-					  <center>
-						<span style="font-size:16px">Description 2</span>
-					  </center>
-					</td>
-				  </tr>
-			</table>
-
-			<table align=center width=250px>
-				<tr>
-					<td align=center width=120px>
-						<center>
-							<span style="font-size:24px"><a href=''>[Paper]</a></span>
-						</center>
-					</td>
-					<td align=center width=120px>
-						<center>
-							<span style="font-size:24px"><a href='https://github.com/richzhang/webpage-template'>[GitHub]</a></span><br>
-						</center>
-					</td>
-				</tr>
-			</table>
-		</table>
 	</center>
 
+	<div class="table-of-contents" align="left">
+		<h2 class="table-of-contents-title">Table of Contents</h2>
+		<ul>
+			<li><a href="#introduction">Introduction</a></li>
+			<li><a href="#competition">Competition Detail</a></li>
+			<li><a href="#hardware">Hardware Integration</a></li>
+			<li><a href="#system">System Architecture</a></li>
+			<li><a href="#motion">Motion Planning and Collision Avoidance</a></li>
+			<li><a href="#object">Object and Grasp Detection</a></li>
+			<li><a href="#gripper">Effective end-effectors for ever-changing edibles</a></li>
+			<li><a href="#algorithm">Food Handling Algorithm</a></li>
+			<li><a href="#algorithm">Demonstrations</a></li>
+			<li><a href="#algorithm">Discussion</a></li>
+		</ul>
+	</div>
+
+	<hr>
+
 	<center>
+
+		<table align=center width=850px>
+			<center><h2 id="introduction">Introduction</h1></center>
+			<tr>
+				<td>
+					Robot food handling challenges. 
+				</td>
+			</tr>
+		</table>
+
 		<table align=center width=850px>
 			<tr>
 				<td width=280px style="padding-right: 20px;">
 					<center>
-						<img class="round" style="width:500px" src="./resources/main_1.jpg"/>
+						<img class="round" style="width:400px" src="./resources/main_1.jpg"/>
 					</center>
 				</td>
 				<td width=280px style="padding-right: 20px;">
 					<center>
-						<img class="round" style="width:500px" src="./resources/main_2.jpg"/>
+						<img class="round" style="width:400px" src="./resources/main_2.jpg"/>
 					</center>
 				</td>
 			</tr>
@@ -278,10 +232,12 @@
 		</table>
 	</center>
 
+
+
 	<hr>
 
 	<table align=center width=850px>
-		<center><h1>Competition Detail</h1></center>
+		<center><h2 id="competition">Competition Detail</h1></center>
 		<tr>
 			<td>
 				A robot must assemble as many complete food trays as possible in 30 minutes. The robot must use at least one "soft" component, such as but not limited to a gripper, and must be fully autonomous. The food tray shall contain seven types of food selected from the list below:
@@ -313,7 +269,7 @@
 	<hr>
 
 	<table align=center width=850px>
-		<center><h1>Motion Planning and Collision Avoidance</h1></center>
+		<center><h1 id="motion">Motion Planning and Collision Avoidance</h1></center>
 		<tr>
 			<td>
 				One of the difficulties in this competition is to move the robot arm to a place without collision with the surrounding physical environment, such as bins and the rack. Our solution was building a digital twin in the Moveit! motion planning framework. Since this framework considers the motion planning of a robot arm by avoiding virtual objects, both motion planning and collision avoidance can be exploited as long as the virtual objects and the robot arms present the actual ones.
@@ -352,10 +308,16 @@
 
 	<hr>
 	<table align=center width=850px>
-		<center><h1>Object and Grasp Detection</h1></center>
+		<center><h1 id="object">Object and Grasp Detection</h1></center>
 		<tr>
 			<td>
-				Our robot system has a RealSense Depth Camera D435i for object and grasp detection. The computer vision system consists of three parts: (1) object detection by YOLO, (2) generation of grasp pose in bins by FGE Algorithm, and (3) object localization on the workspace.
+				For vision capabilities, our robot system is equiped with a RealSense Depth Camera D435i to provide RBG-D images 
+				and is used for object and grasp detection. The purpose of the vision system is to localize grapsing candidates inside a food 
+				bin or the bottle sitting on the table. The grasping candidtaes are then transformed to robot coordinate frame to execute the grasp primitive. 
+				The computer vision system consists of three parts: 
+				(1) object detection by YOLO, 
+				(2) generation of grasp pose in bins by FGE Algorithm, and 
+				(3) object localization on the workspace.
 				<br>
 				<br>
 				1. Object detection by YOLO
@@ -377,8 +339,10 @@
 				<br>
 				<br>
 				3. Object localization on the workspace
-				<br>
-				~~
+				To achieve object localization, we first perform eye-in-hand calibration from which we can obtain the transformation from camera frame to robot frame \(^rT_c\). This allow 
+				us to transform detected points in the image frame to the robot frame. For object detection by YOLO, we use the center of the bouding box with a fixed gripper orientation to generate grasping poses. 
+				For FGE algrithm, we use the center of the grasping candidates as the grasping pose.
+
 				<br>
 				<br>
 				
@@ -395,7 +359,7 @@
 
 	<hr>
 	<table align=center width=850px>
-		<center><h1>Effective end-effectors for ever-changing edibles</h1></center>
+		<center><h1 id="gripper">Effective end-effectors for ever-changing edibles</h1></center>
 		<tr>
 			<td>
 				<p> 
@@ -417,7 +381,7 @@
 
 	<hr>
 
-	<center><h1>Hardware Integration</h1></center>
+	<center><h1 id="hardware">Hardware Integration</h1></center>
 
 	<table align=center width=420px>
 		<center>
@@ -431,7 +395,7 @@
 		<tr>
 			<td align=center width=400px>
 				<center>
-					<td><img class="round" style="width:700px" src="./resources/whole_figure.png"/></td>
+					<td><img class="round" style="width:850px" src="./resources/whole_figure.png"/></td>
 				</center>
 			</td>
 		</tr>
@@ -440,7 +404,10 @@
 		<center>
 			<tr>
 				<td>
-					This describes the system for robot food handling with a diagram. 
+					<br>
+					Due to the size of the workspace for the food handling challenge, we have decided to position the camera parallel to the robot arm and the gripper at a 45 degree angle to the camera.
+					We found that this configuration enableed the UR10 robot arm to move freely around the shelves without collision or reach to all the key areas of the workspace without singularities.
+
 				</td>
 			</tr>
 		</center>
@@ -464,7 +431,7 @@
 	</table>
 	<hr> -->
 
-	<center><h1>Algorithm</h1></center>
+	<center><h1 id="algorithm">Algorithm</h1></center>
 
 	<table align=center width=420px>
 		<center>
@@ -499,6 +466,120 @@
 			</center>
 		</span>
 	</table>
+	
+	<hr>
+	<table align=center width=600px>
+
+		<!-- Postdoc/Student Authors -->
+		<table align=center width=800px>
+			<tr>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Saekwang Nam</a></span>
+					</center>
+				</td>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Loong Yi Lee</a></span>
+					</center>
+				</td>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Max Yang</a></span>
+					</center>
+				</td>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://naokishitanda.portfoliobox.net/">Naoki Shitanda</a></span>
+					</center>
+				</td>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Lihaoya Tan</a></span>
+					</center>
+				</td>
+			</tr>
+
+			<tr>
+				<td align="center" width="150px">
+				  <center>
+					<span style="font-size:16px">Description 1</span>
+				  </center>
+				</td>
+				<td align="center" width="150px">
+				  <center>
+					<span style="font-size:16px">Description 2</span>
+				  </center>
+				</td>
+				<td align="center" width="150px">
+				  <center>
+					<span style="font-size:16px">Description 3</span>
+				  </center>
+				</td>
+				<td align="center" width="150px">
+				  <center>
+					<span style="font-size:16px">Sch. of Electrical & Electronic Eng. Kyoto University, Japan</span>
+				  </center>
+				</td>
+				<td align="center" width="150px">
+					<center>
+					  <span style="font-size:16px">Description 5</span>
+					</center>
+				  </td>
+			</tr>
+
+			<!-- Add vertical padding between student and faculty sections -->
+			<tr style="height: 20px;">
+				<td colspan="4"></td>
+			</tr>
+			
+		</table>
+		
+		<!-- Faculty Authors -->
+		<table align=center width=500px>
+			<tr>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Jonathan Rossiter</a></span>
+					</center>
+				</td>
+				<td align=center width=150px>
+					<center>
+						<span style="font-size:24px"><a href="https://en.wikipedia.org/wiki/James_J._Gibson">Nathan Lepora</a></span>
+					</center>
+				</td>
+			</tr>
+
+			<tr>
+				<td align="center" width="150px">
+				  <center>
+					<span style="font-size:16px">Description 1</span>
+				  </center>
+				</td>
+				<td align="center" width="150px">
+				  <center>
+					<span style="font-size:16px">Description 2</span>
+				  </center>
+				</td>
+			  </tr>
+		</table>
+
+		<table align=center width=250px>
+			<tr>
+				<td align=center width=120px>
+					<center>
+						<span style="font-size:24px"><a href=''>[Paper]</a></span>
+					</center>
+				</td>
+				<td align=center width=120px>
+					<center>
+						<span style="font-size:24px"><a href='https://github.com/richzhang/webpage-template'>[GitHub]</a></span><br>
+					</center>
+				</td>
+			</tr>
+		</table>
+	</table>
+
 	<br>
 	<hr>
 	<table align=center width=450px>
