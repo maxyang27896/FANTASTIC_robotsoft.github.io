@@ -11,10 +11,66 @@
 		margin-right: auto;
 		width: 1100px;
 	}
+
+	header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 20px;
+      z-index: 9999; /* Ensures the header stays on top of other elements */
+    }
+
+    /* CSS for the logo */
+    .logo {
+      float: left;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* CSS for the text */
+    .header-text {
+		
+      text-align: left;
+      font-size: 16px;
+	  color: #FFFFFF
+    }
+
+    .title-box {
+		/* background-color: #f2f2f2; */
+		padding-top: 20px;
+		width: 100%;
+		margin-top: 50px;
+    }
+
+    .title-box h1 {
+      margin: 0;
+    }
+
+    .title-box img {
+      display: block;
+      margin: 10px 0;
+    }
+
+	.title-box .footnote {
+		font-size: 16px;
+		font-style: italic;
+		color: #666;
+		margin-bottom: -10px;
+		margin-top: 10px;
+		text-align: left;
+	}
+
+    /* Change header color on scroll */
+    .change-color {
+      background-color: #555;
+    }
 	
 	h1 {
 		font-size:32px;
 		font-weight:300;
+		scroll-margin-top: 100px;
 	}
 	
 	.disclaimerbox {
@@ -170,27 +226,91 @@
 
 		gtag('config', 'UA-75863369-6');
 	</script>
+
 </head>
 
 <body>
-	<br>
-	<center>
-		<div style="margin-bottom: 20px;">
-			<span style="font-size:40px">Integrated System for Robot Food Handling at the Robosoft 2023 Manipulation Competition</span>
+
+	<header>
+		<!-- <div class="logo">
+		  <img src="logo.png" alt="Logo">
+		</div> -->
+		<div class="header-text">
+		  Fantastic.github.io
 		</div>
-	</center>
+	  </header>
+
+	<div class="title-box">
+		<center>	
+		<span style="font-size:40px">
+			Integrated System for Robot Food Handling at the Robosoft 2023 Manipulation Competition
+		</span>
+		</center>
+		<table align=center width=850px>
+			<tr>
+				<td>
+					<p class="footnote">This site presents a system for autonomous pick and place of food items, as specified by the IEEE Soft Robotics Conference 2023 (Robosoft) Manipulation Challenge, by Max Yang.</p>
+				</td>
+			</tr>
+		</table>
+		<br>
+
+		<table align=center width=850px>
+			<tr>
+				<td width=280px style="padding-right: 20px;">
+					<center>
+						<img class="round" style="width:400px" src="./resources/demo_gifs/broccoli_AdobeExpress.gif"/>
+					</center>
+				</td>
+				<td width=280px style="padding-right: 20px;">
+					<center>
+						<img class="round" style="width:400px" src="./resources/demo_gifs/cherries_AdobeExpress.gif"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=280px style="padding-right: 20px;">
+					<center>
+						<img class="round" style="width:400px" src="./resources/demo_gifs/fries_AdobeExpress.gif"/>
+					</center>
+				</td>
+				<td width=280px style="padding-right: 20px;">
+					<center>
+						<img class="round" style="width:400px" src="./resources/demo_gifs/sausages_AdobeExpress.gif"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<script>
+		window.addEventListener('scroll', function() {
+		var header = document.querySelector('header');
+		var titleBox = document.querySelector('.title-box');
+		var titleBoxBottom = titleBox.offsetTop + titleBox.offsetHeight;
+	
+		if (window.pageYOffset > titleBoxBottom) {
+			header.classList.add('change-color');
+		} else {
+			header.classList.remove('change-color');
+		}
+		});
+	</script>
+
+	<br>
 
 	<div class="table-of-contents" align="left">
 		<h2 class="table-of-contents-title">Table of Contents</h2>
 		<ul>
-			<li><a href="#introduction">Introduction</a></li>
-			<li><a href="#competition">Competition Detail</a></li>
+			<li><a href="#challenge">Challenge Overview</a></li>
 			<li><a href="#hardware">Hardware Integration</a></li>
 			<li><a href="#system">System Architecture</a></li>
 			<li><a href="#motion">Motion Planning and Collision Avoidance</a></li>
 			<li><a href="#object">Object and Grasp Detection</a></li>
 			<li><a href="#gripper">Effective end-effectors for ever-changing edibles</a></li>
-			<li><a href="#foodalgorithm">Food Handling Algorithm</a></li>
+			<!-- <li><a href="#foodalgorithm">Food Handling Algorithm</a></li> -->
 			<li><a href="#algorithm">Demonstrations</a></li>
 			<li><a href="#algorithm">Discussion</a></li>
 		</ul>
@@ -201,10 +321,10 @@
 	<center>
 
 		<table align=center width=850px>
-			<center><h2 id="introduction">Introduction</h1></center>
+			<center><h1 id="Challenges">Challenge Overview</h1></center>
 			<tr>
 				<td>
-					Robot food handling challenges. 
+					Pick the food from the bins, place them onto a tray. The system involves object recognition, bin-picking, motion planning around the environment, and end effector design for food handling.
 				</td>
 			</tr>
 		</table>
@@ -226,7 +346,27 @@
 		<table align=center width=850px>
 			<tr>
 				<td>
-					Pick the food from the bins, place them onto a tray. This site presents a system for autonomous pick and place of food items, as specified by the IEEE Soft Robotics Conference 2023 (Robosoft) Manipulation Challenge. The system involves object recognition, bin-picking, motion planning around the environment, and end effector design for food handling.
+					A robot must assemble as many complete food trays as possible in 30 minutes. The robot must use at least one "soft" component, such as but not limited to a gripper, and must be fully autonomous. The food tray shall contain seven types of food selected from the list below:
+					<br>
+					<ul>
+						<li>Frankfurter sausages (boiled)</li>
+						<li>Meatballs (cooked)</li>
+						<li>Broccoli (florets, raw)</li>
+						<li>Carrots (sliced, 2-5 mm in thickness, cooked)</li>
+						<li>Green beans (cooked)</li>
+						<li>Spaghetti Noodles (cooked)</li>
+						<li>Cookies from IKEA (KAFFEREP)</li>
+						<li>Fried eggs (sunny side up)</li>
+						<li>Surprise food item (It was turned out as iced gems.)</li>
+						<li>Orange juice</li>
+					</ul>
+					<br>
+					The surprise food item was randomly replaced with another food item on the list 30 minutes before the actual run. Therefore, each team got a different combination of food items in the competition. To our team, broccoli was replaced with iced gems.
+					In no specific order, a robot must pick food items from the source table and place them into particular containers on a tray. The robot may assemble up to two complete trays with a predefined quantity of the items. On the source table, the bins are filled with more food than the required quantity to assemble and are firmly glued to a fixed rack and the source table. During the actual run, a team can restart the autonomous system, but the score is reset to zero.
+					A detailed rule book can be found here.
+					<br>
+					<br>
+					Further detailed rules and scoring guidelines can be found <a href="./resources/pdfs/RoboSoft_competition_guides.pdf" target="_blank">here</a>.
 				</td>
 			</tr>
 		</table>
@@ -282,16 +422,16 @@
 			</tr>
 		</center>
 	</table>
-	<table align=center width=400px>
+	<table align=center width=850px>
 		<tr>
-			<td align=center width=400px>
+			<td align=center width=850px>
 				<center>
-					<td><img class="round" style="width:450px" src="./resources/method_diagram.png"/></td>
+					<td><img class="round" style="width:850px" src="./resources/system_diagram.png"/></td>
 				</center>
 			</td>
 		</tr>
 	</table>
-	<table align=center width=850px>
+	<!-- <table align=center width=850px>
 		<center>
 			<tr>
 				<td>
@@ -299,41 +439,11 @@
 				</td>
 			</tr>
 		</center>
-	</table>
-	<hr>
-
-
-	<table align=center width=850px>
-		<center><h2 id="competition">Competition Detail</h1></center>
-		<tr>
-			<td>
-				A robot must assemble as many complete food trays as possible in 30 minutes. The robot must use at least one "soft" component, such as but not limited to a gripper, and must be fully autonomous. The food tray shall contain seven types of food selected from the list below:
-				<br>
-				<ul>
-					<li>Frankfurter sausages (boiled)</li>
-					<li>Meatballs (cooked)</li>
-					<li>Broccoli (florets, raw)</li>
-					<li>Carrots (sliced, 2-5 mm in thickness, cooked)</li>
-					<li>Green beans (cooked)</li>
-					<li>Spaghetti Noodles (cooked)</li>
-					<li>Cookies from IKEA (KAFFEREP)</li>
-					<li>Fried eggs (sunny side up)</li>
-					<li>Surprise food item (It was turned out as iced gems.)</li>
-					<li>Orange juice</li>
-				</ul>
-				<br>
-				The surprise food item was randomly replaced with another food item on the list 30 minutes before the actual run. Therefore, each team got a different combination of food items in the competition. To our team, broccoli was replaced with iced gems.
-				In no specific order, a robot must pick food items from the source table and place them into particular containers on a tray. The robot may assemble up to two complete trays with a predefined quantity of the items. On the source table, the bins are filled with more food than the required quantity to assemble and are firmly glued to a fixed rack and the source table. During the actual run, a team can restart the autonomous system, but the score is reset to zero.
-				A detailed rule book can be found here.
-				<br>
-				<br>
-				Further detailed rules and scoring guidelines can be found <a href="./resources/pdfs/RoboSoft_competition_guides.pdf" target="_blank">here</a>.
-			</td>
-		</tr>
-	</table>
+	</table> -->
 	<br>
-
 	<hr>
+
+
 
 	<table align=center width=850px>
 		<center><h1 id="motion">Motion Planning and Collision Avoidance</h1></center>
@@ -428,24 +538,54 @@
 	<table align=center width=850px>
 		<center><h1 id="gripper">Effective end-effectors for ever-changing edibles</h1></center>
 		<tr>
-			<td>
-				<p> 
-					Pick and place of food items assumes a good enough grasp on the object. This may be a challenge as food can be... messy. Different shapes, textures, sizes, with all its organic variance.
-					Compliant grippers are the key to handling such variation, and since the competition requires soft materials as part of robot functionality. An interesting soft gripper is needed.
-					<br>
-					<br>
-					The gripper developed for the competition is a variant of the popular Fin Ray effect adaptive fingers. The Fin Ray fingers were printed in a multi-material mix of vero and agilus material on a Connex Objet printer. They are curve-shaped to promote scooping behaviors and increase grasp volume.
-				</p>
-				<td width=280px style="padding-right: 20px;">
-					<center>
-						<img class="round" style="width:200px" src="./resources/grippertest (1).gif"/>
-					</center>
-				</td>
-
+			<td width=280px style="padding-bottom: 20px;">
+				<center>
+					<img class="round" style="width:120px" src="./resources/gripper_gifs/berries_AdobeExpress.gif"/>
+				</center>
+			</td>
+			<td width=280px style="padding-bottom: 20px;">
+				<center>
+					<img class="round" style="width:120px" src="./resources/gripper_gifs/egg_AdobeExpress.gif"/>
+				</center>
+			</td>
+			<td width=280px style="padding-bottom: 20px;">
+				<center>
+					<img class="round" style="width:120px" src="./resources/gripper_gifs/paper_AdobeExpress.gif"/>
+				</center>
+			</td>
+			<td width=280px style="padding-bottom: 20px;">
+				<center>
+					<img class="round" style="width:120px" src="./resources/gripper_gifs/phone_AdobeExpress.gif"/>
+				</center>
+			</td>
+			<td width=280px style="padding-bottom: 20px;">
+				<center>
+					<img class="round" style="width:120px" src="./resources/gripper_gifs/pins_AdobeExpress.gif"/>
+				</center>
+			</td>
+			<td width=280px style="padding-bottom: 20px;">
+				<center>
+					<img class="round" style="width:120px" src="./resources/gripper_gifs/pipe_AdobeExpress.gif"/>
+				</center>
 			</td>
 		</tr>
 	</table>
-	<br>
+
+	<table align=center width=850px>
+		<center>
+			<tr>
+				<td>
+					<p> 
+						Pick and place of food items assumes a good enough grasp on the object. This may be a challenge as food can be... messy. Different shapes, textures, sizes, with all its organic variance.
+						Compliant grippers are the key to handling such variation, and since the competition requires soft materials as part of robot functionality. An interesting soft gripper is needed.
+						<br>
+						<br>
+						The gripper developed for the competition is a variant of the popular Fin Ray effect adaptive fingers. The Fin Ray fingers were printed in a multi-material mix of vero and agilus material on a Connex Objet printer. They are curve-shaped to promote scooping behaviors and increase grasp volume.
+					</p>
+				</td>
+			</tr>
+		</center>
+	</table>
 
 	<hr>
 
@@ -466,7 +606,7 @@
 	</table>
 	<hr> -->
 
-	<center><h1 id="foodalgorithm">Food Handling Algorithm</h1></center>
+	<!-- <center><h1 id="foodalgorithm">Food Handling Algorithm</h1></center>
 
 	<table align=center width=420px>
 		<center>
@@ -502,7 +642,29 @@
 		</span>
 	</table>
 	
-	<hr>
+	<hr> -->
+
+	<center><h1 id="team">Project Team</h1></center>
+	<table align=center width=850px>
+		<center>
+			<tr>
+				<td>
+					<ul>
+						<li>Saekwang Nam, </li>
+						<li>Loong Yi Lee</li>
+						<li>Max Yang</li>
+						<li>Naoki Shitanda </li>
+						<li>Lihaoya Tan</li>
+						<li>Jonathan Rossiter</li>
+						<li>Nathan F. Lepora</li>
+	
+						<!-- Add more list items for each team member -->
+					</ul>
+				</td>
+			</tr>
+		</center>
+	</table>
+
 	<table align=center width=600px>
 
 		<!-- Postdoc/Student Authors -->
@@ -599,7 +761,7 @@
 			  </tr>
 		</table>
 
-		<table align=center width=250px>
+		<!-- <table align=center width=250px>
 			<tr>
 				<td align=center width=120px>
 					<center>
@@ -612,12 +774,12 @@
 					</center>
 				</td>
 			</tr>
-		</table>
+		</table> -->
 	</table>
 
 	<br>
 	<hr>
-	<table align=center width=450px>
+	<!-- <table align=center width=450px>
 		<center><h1>Paper and Supplementary Material</h1></center>
 		<tr>
 			<td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
@@ -625,13 +787,12 @@
 				<b>Creative and Descriptive Paper Title.</b><br>
 				In Conference, 20XX.<br>
 				(hosted on <a href="">ArXiv</a>)<br>
-				<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
 				<span style="font-size:4pt"><a href=""><br></a>
 				</span>
 			</td>
 		</tr>
-	</table>
-	<br>
+	</table> -->
+	<!-- <br>
 
 	<table align=center width=600px>
 		<tr>
@@ -641,7 +802,7 @@
 		</tr>
 	</table>
 
-	<hr>
+	<hr> -->
 	<br>
 
 	<table align=center width=900px>
